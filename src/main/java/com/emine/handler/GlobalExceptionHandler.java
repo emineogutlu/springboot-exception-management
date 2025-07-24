@@ -45,7 +45,7 @@ public class GlobalExceptionHandler {
            System.out.println("hata oluştu." + e.getMessage());
         }
 return null;
-    } 
+    }
 
 
 
