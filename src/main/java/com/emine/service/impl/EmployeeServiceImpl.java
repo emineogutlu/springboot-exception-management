@@ -2,6 +2,9 @@ package com.emine.service.impl;
 
 import com.emine.dto.DtoDepartment;
 import com.emine.dto.DtoEmployee;
+import com.emine.exception.BaseException;
+import com.emine.exception.ErrorMessage;
+import com.emine.exception.MessageType;
 import com.emine.model.Department;
 import com.emine.model.Employee;
 import com.emine.repository.EmployeeRepository;
@@ -26,7 +29,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
      Optional<Employee>optional= employeeRepository.findById(id);
 
      if(optional.isEmpty()){
-         return null;
+   throw new BaseException(new ErrorMessage(MessageType.NO_RECORD_EXIST,id.toString()));
+
      }
      Employee employee=optional.get();
         Department department=employee.getDepartment();
